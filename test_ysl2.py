@@ -41,9 +41,9 @@ class TestMail():
         button1 = browser.find_element_by_css_selector('[ href="/mvd/documents/other-docs"]')
         ActionChains(browser).move_to_element(button1).perform()
         button1.click()
-        time.sleep(10)
-        browser.find_element_by_class_name('[href="https://media.mvd.ru/files/application/1493272"]').click()
-        #browser.set_preference("pdfjs.disabled", True)
+        time.sleep(5)
+        browser.find_element_by_xpath("//*[text()='Постановление Правительства Российской Федерации от 19 января 2019 г. № 14 «О внесении изменений в Положение об установлении формы визы, порядка и условий ее оформления и выдачи, продления срока ее действия, восстановления ее в случае утраты, а также порядка аннулирования визы»']").click()
+        browser.set_preference("pdfjs.disabled", True)
 
 
     # pytest -s -v test_2.py
