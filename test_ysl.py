@@ -1,8 +1,7 @@
 import pytest
 from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
-
-link = "https://www.gosuslugi.ru/new"
+import time
 
 
 @pytest.fixture
@@ -17,12 +16,15 @@ def browser():
 
 class TestMail():
     # вызываем фикстуру в тесте, передав ее как параметр
-    def test_guest_should_see_login_link(self, browser):
+    def test_one(self, browser):
+        link = "https://www.gosuslugi.ru"
         browser.get(link)
-        browser.implicitly_wait(20)
-        button2 = browser.find_element_by_css_selector(".main-app-logo")
-        button2.click()
-        input1 = browser.find_element_by_xpath("//*[@id='_epgu_el2']/div/input")  # находим поисковую строку
+        browser.implicitly_wait(30)
+        #button2 = browser.find_element_by_css_selector(".main-app-logo")
+        #button2.click()
+
+        browser.execute_script("document.getElementById('_epgu_el1').click()")
+        input1 = browser.find_element_by_id("_epgu_el1")  # находим поисковую строку
         input1.send_keys("загран")
 
         browser.find_element_by_xpath("//*[text()='загранпаспорт нового поколения 18 лет']").click()
